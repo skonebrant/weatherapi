@@ -1,0 +1,9 @@
+geocode:
+  api:
+    url: "https://api.example.com/geocode"
+    key: "testApiKey"
+
+yr:
+  api:
+    url: "https://api.example.com/weatherapi/locationforecast/2.0/compact"
+    user-agent: "CarlsWeatherApp/1.0 (contact: cskonebrant@gmail.com; website: carlsweatherapp.com)"

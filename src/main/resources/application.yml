@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: weather-api
+
+yr:
+  api:
+    url: "https://api.met.no/weatherapi/locationforecast/2.0/compact"
+    user-agent: "CarlsWeatherApp/1.0 (contact: cskonebrant@gmail.com; website: carlsweatherapp.com)"
+    
+geocode:
+  api:
+    url: "https://geocode.maps.co/search" 
+    key: 67c18b645e47a507379268pkj7a603d
