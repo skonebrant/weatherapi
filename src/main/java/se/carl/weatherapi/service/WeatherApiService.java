@@ -22,7 +22,7 @@ public class WeatherApiService implements WeatherDataService {
     private String userAgent;
 
     @Override
-    public String getWeatherData(String latitude, String longitude) {
+    public String getWeatherDataFromApi(String latitude, String longitude) {
         var urlWithParams = apiUrl + "?lat=" + latitude + "&lon=" + longitude;
 
         restTemplate.getInterceptors().add((request, body, execution) -> {

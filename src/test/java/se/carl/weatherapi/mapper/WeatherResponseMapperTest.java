@@ -10,9 +10,10 @@ import org.mapstruct.factory.Mappers;
 import se.carl.weatherapi.dto.WeatherApiResponse;
 import se.carl.weatherapi.dto.WeatherApiResponse.*;
 
-class WeatherMapperTest {
+class WeatherResponseMapperTest {
 
-	private final WeatherMapper weatherMapper = Mappers.getMapper(WeatherMapper.class);
+	private final WeatherResponseMapper weatherMapper =
+			Mappers.getMapper(WeatherResponseMapper.class);
 
 	@Test
 	void testMapWeatherApiResponseToWeatherResponse() {

@@ -1,5 +1,5 @@
 package se.carl.weatherapi.interfaces;
 
 public interface WeatherDataService {
-    String getWeatherData(String latitude, String longitude);
+    String getWeatherDataFromApi(String latitude, String longitude);
 }

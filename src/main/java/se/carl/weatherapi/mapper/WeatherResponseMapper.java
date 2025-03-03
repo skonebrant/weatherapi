@@ -16,9 +16,9 @@ import se.carl.weatherapi.dto.WeatherResponse.Forecast.Weather;
 import se.carl.weatherapi.dto.WeatherResponse.Forecast.Wind;
 
 @Mapper(componentModel = "spring")
-public interface WeatherMapper {
+public interface WeatherResponseMapper {
 
-    WeatherMapper INSTANCE = Mappers.getMapper(WeatherMapper.class);
+    WeatherResponseMapper INSTANCE = Mappers.getMapper(WeatherResponseMapper.class);
 
     @Mapping(source = "weatherApiResponse.properties.timeseries", target = "forecast")
     WeatherResponse mapWeatherApiResponseToWeatherResponse(String cityName,

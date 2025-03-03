@@ -34,7 +34,7 @@ class WeatherApiServiceIntegrationTest {
 		var expectedUrl = apiUrl + "?lat=59.3293&lon=18.0686";
 		when(restTemplate.getForObject(expectedUrl, String.class)).thenReturn(mockResponse);
 
-		var response = weatherApiService.getWeatherData("59.3293", "18.0686");
+		var response = weatherApiService.getWeatherDataFromApi("59.3293", "18.0686");
 
 		assertEquals(mockResponse, response);
 	}
@@ -45,7 +45,7 @@ class WeatherApiServiceIntegrationTest {
 		when(restTemplate.getForObject(expectedUrl, String.class)).thenReturn(null);
 
 		var exception = assertThrows(RestClientCustomException.class, () -> {
-			weatherApiService.getWeatherData("59.3293", "18.0686");
+			weatherApiService.getWeatherDataFromApi("59.3293", "18.0686");
 		});
 
 		assertEquals("Error fetching weather data: Weather data not found", exception.getMessage());
@@ -59,7 +59,7 @@ class WeatherApiServiceIntegrationTest {
 				.thenThrow(new RestClientException("API error"));
 
 		var exception = assertThrows(RestClientCustomException.class, () -> {
-			weatherApiService.getWeatherData("59.3293", "18.0686");
+			weatherApiService.getWeatherDataFromApi("59.3293", "18.0686");
 		});
 
 		assertEquals("Error fetching weather data: API error", exception.getMessage());

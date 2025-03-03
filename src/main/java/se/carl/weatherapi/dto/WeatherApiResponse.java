@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Builder(toBuilder = true)
 public record WeatherApiResponse(Properties properties) {
 
         @JsonIgnoreProperties(ignoreUnknown = true)

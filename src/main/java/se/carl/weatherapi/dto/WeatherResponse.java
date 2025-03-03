@@ -1,7 +1,9 @@
 package se.carl.weatherapi.dto;
 
 import java.util.List;
+import lombok.Builder;
 
+@Builder(toBuilder = true)
 public record WeatherResponse(String cityName, List<Forecast> forecast) {
 
         public record Forecast(String time, double temperature, Weather weather,

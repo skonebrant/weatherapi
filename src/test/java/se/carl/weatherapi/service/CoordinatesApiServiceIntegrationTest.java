@@ -22,7 +22,7 @@ class CoordinatesApiServiceIntegrationTest {
 	private RestTemplate restTemplate;
 
 	@Autowired
-	private CoordinatesApiService geoCodeApiService;
+	private CoordinatesApiService coordinatesApiService;
 
 	@Value("${geocode.api.url}")
 	private String apiUrl;
@@ -32,11 +32,13 @@ class CoordinatesApiServiceIntegrationTest {
 
 	@Test
 	void testGetGeoCode_Success() {
-		CoordinatesResponse[] mockResponse = {new CoordinatesResponse("Stockholm", "59.3293", "18.0686", 0.9)};
+		CoordinatesResponse[] mockResponse =
+				{new CoordinatesResponse("Stockholm", "59.3293", "18.0686", 0.9)};
 		var expectedUrl = apiUrl + "?q=Stockholm&api_key=" + apiKey;
-		when(restTemplate.getForObject(expectedUrl, CoordinatesResponse[].class)).thenReturn(mockResponse);
+		when(restTemplate.getForObject(expectedUrl, CoordinatesResponse[].class))
+				.thenReturn(mockResponse);
 
-		var response = geoCodeApiService.getGeoCode("Stockholm");
+		var response = coordinatesApiService.getCoordinatesFromApiResponse("Stockholm");
 
 		assertEquals("Stockholm", response.cityName());
 		assertEquals("59.3293", response.latitude());
@@ -50,7 +52,7 @@ class CoordinatesApiServiceIntegrationTest {
 		when(restTemplate.getForObject(expectedUrl, CoordinatesResponse[].class)).thenReturn(null);
 
 		var exception = assertThrows(RestClientCustomException.class, () -> {
-			geoCodeApiService.getGeoCode("UnknownCity");
+			coordinatesApiService.getCoordinatesFromApiResponse("UnknownCity");
 		});
 
 		assertEquals("No response from Coordinates API for city: UnknownCity", exception.getMessage());
@@ -64,7 +66,7 @@ class CoordinatesApiServiceIntegrationTest {
 				.thenThrow(new RestClientException("API error"));
 
 		var exception = assertThrows(RestClientCustomException.class, () -> {
-			geoCodeApiService.getGeoCode("Stockholm");
+			coordinatesApiService.getCoordinatesFromApiResponse("Stockholm");
 		});
 
 		assertEquals("Error fetching Coordinate data: API error", exception.getMessage());

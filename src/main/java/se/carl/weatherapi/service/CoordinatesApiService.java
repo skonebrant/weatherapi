@@ -25,7 +25,7 @@ public class CoordinatesApiService implements CoordinatesDataService {
     private final RestTemplate restTemplate;
 
     @Override
-    public CoordinatesResponse getGeoCode(String cityName) {
+    public CoordinatesResponse getCoordinatesFromApiResponse(String cityName) {
         var url = UriComponentsBuilder.fromUriString(apiUrl).queryParam("q", cityName)
                 .queryParam("api_key", apiKey).toUriString();
 
